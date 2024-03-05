@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import styled from "styled-components";
 import Cookies from "universal-cookie";
 import { IoIosHome } from "react-icons/io";
+import styled from "styled-components";
 
 const Header = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -29,16 +29,34 @@ const Header = () => {
 
 
     return (
-        <>
-            <div>
-                <IoIosHome onClick={() => { navigate("/") }} />
+        <Container>
+            <StyledHeader>
+                <IoIosHome size={24} style={{cursor: 'pointer'}} onClick={() => { navigate("/") }} />
                 {isLoggedIn && (
-                    <span onClick={() => { handleLogout(); }}>
-                        로그아웃</span>
+                    <StyledSpan onClick={() => { handleLogout(); }}>
+                        로그아웃</StyledSpan>
                 )}
-            </div>
-        </>
+            </StyledHeader>
+        </Container>
     )
 }
 
 export default Header;
+
+const Container = styled.div`
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+`
+
+const StyledHeader = styled.div`
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid gray;
+`
+
+const StyledSpan = styled.span`
+    cursor: pointer;
+`
