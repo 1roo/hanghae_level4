@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import Cookies from "universal-cookie";
 import api from "../axios/api";
 import { jwtDecode } from "jwt-decode";
 
 
-const useLogin = () => {
 
+const useLogin = () => {
 
     const cookie = new Cookies();
 
@@ -31,11 +31,11 @@ const useLogin = () => {
             setIsLoading(true);
             try {
                 const { data } = await api.post("/login", user);
-
+    
                 cookie.set("accessToken", data.token, { path: "/", maxAge: 600 });
                 cookie.set("id", jwtDecode(data.token).id, { path: "/", maxAge: 600 });
-
                 navigate("/");
+                console.log('useLogin,login성공');
             } catch (error) {
                 setIsError(true);
                 setError(error.response.data.message);

@@ -1,6 +1,6 @@
 import axios from "axios"
 
-//cors 안뜨게 axios 인스턴스 생성
+
 const api = axios.create({
     baseURL: process.env.REACT_APP_SERVER_URL,
     headers: {

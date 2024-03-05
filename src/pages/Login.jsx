@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import useLogin from "../hooks/useLogin";
 
 const Login = () => {
@@ -23,7 +23,7 @@ const Login = () => {
           value={user.password}
           onChange={changeHandler} />
 
-        <button>로그인</button>
+        <button type="submit">로그인</button>
         <button
           type="button"
           onClick={() => {
